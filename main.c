@@ -22,11 +22,15 @@ int main(int argc, char** argv){
 	  FILE* file = fopen(filename,"r");
 
 	  if (0 != file){
-	    char hdu[80];
+	    /*
+	     * Dumping headers and data and extensions and tables
+	     */
+	    char heda[80];
+
 	    off_t fcc = 0;
 	    while ( (fcc+80) < fsz){
 
-	      size_t fre = fread(hdu,1,80,file);
+	      size_t fre = fread(heda,1,80,file);
 	      if (80 == fre){
 
 		/*
@@ -41,7 +45,7 @@ int main(int argc, char** argv){
 		 */
 		for (int cc = 0; cc < LN; cc++){
 
-		  char ch = (hdu[cc] & 0x7f);
+		  char ch = (heda[cc] & 0x7f);
 		  if (0x1f < ch && 0x7f > ch){
 
 		    string[cc] = ch;
