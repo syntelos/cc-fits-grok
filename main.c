@@ -5,7 +5,6 @@
 #include <string.h>
 
 #define LN 70
-#define LS "%8lx | %s\n"
 
 /**
  * Basic FITS file dump
@@ -30,28 +29,42 @@ int main(int argc, char** argv){
 	      size_t fre = fread(hdu,1,80,file);
 	      if (80 == fre){
 
-		if ((0x1f < hdu[0] && 0x7f > hdu[0]) &&
-		    (0x1f < hdu[60] && 0x7f > hdu[60]))
+		/*
+		 * Partial output window [1]
+		 */
+		char string[LN+1];
 		{
-		  char string[LN+1];
-		  {
-		    string[LN] = 0;
-		  }
-		  strncpy(string,hdu,LN);
-		  
-		  fprintf(stdout,LS,fcc,string);
+		  string[LN] = 0;
+		}
+		/*
+		 * Partial output window [2]
+		 */
+		for (int cc = 0; cc < LN; cc++){
 
-		  fcc += 80;
+		  char ch = (hdu[cc] & 0x7f);
+		  if (0x1f < ch && 0x7f > ch){
+
+		    string[cc] = ch;
+		  }
+		  else {
+		    string[cc] = '~';
+		  }
+		}
+
+		if (fcc < 2880){
+		  /*
+		   * Record Primary
+		   */
+		  fprintf(stdout,"%8lx | %s\n",fcc,string);
 		}
 		else {
-		  /**********************************************
-		   * TODO                                       *
-		   * TODO    BINARY OUTPUT / DATA MATRIX ARRAY  *
-		   * TODO                                       *
-		   * TODO                                       *
-		   **********************************************/
-		  break;
+		  /*
+		   * Record Extension
+		   */
+		  fprintf(stdout,"%8lx + %s\n",fcc,string);
 		}
+
+		fcc += 80;
 	      }
 	      else {
 		fclose(file);
