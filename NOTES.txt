@@ -1,0 +1,39 @@
+                                 -*-outline-*-
+
+* Wells, 1981
+
+** SIMPLE=T 
+
+*** uniform integer data matrix in primary hdu location
+
+*** FORTRAN notation (decl) "INTEGER z(W,H)" (use) "z(x,y)"
+
+         C
+         O
+         L
+    {
+       { x, y },   R O W
+       { x, y },
+       { x, y },
+     
+     
+     
+       { x, y }.
+    }
+
+*** IMAGE W 190, H 244
+
+*** FORTRAN: INTEGER (190,244)
+
+*** C: USHORT[244][190]
+
+*** FITS: SIMPLE T, BITPIX 16, NAXIS 2, NAXIS1 190, NAXIS 2 244
+
+*** primary hdu data matrix would be 1440 16 bit values
+
+*** pixel indexing
+**** z(1,1) = byte[0,1]
+**** z(2,1) = byte[2,3]
+**** z(1,2) = byte[381,382]
+**** z(110,8) = byte[2879,2880]
+
