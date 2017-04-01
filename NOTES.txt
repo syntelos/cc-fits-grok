@@ -1,5 +1,7 @@
                                  -*-outline-*-
 
+http://github.com/syntelos/cc-fits-grok
+
 * Wells, 1981
 
 ** SIMPLE=T 
@@ -27,7 +29,7 @@
 
 *** C: USHORT[244][190]
 
-*** FITS: SIMPLE T, BITPIX 16, NAXIS 2, NAXIS1 190, NAXIS 2 244
+*** FITS: SIMPLE T, BITPIX 16, NAXIS 2, NAXIS1 190, NAXIS2 244
 
 *** primary hdu data matrix would be 1440 16 bit values
 
@@ -36,4 +38,43 @@
 **** z(2,1) = byte[2,3]
 **** z(1,2) = byte[381,382]
 **** z(110,8) = byte[2879,2880]
+
+** BSCALE, BZERO
+
+*** fp = (BSCALE * int ) + BZERO
+
+** BUNIT
+
+*** pixel units
+
+** OBJECT 
+
+*** image name
+
+** CRPIX{n}
+
+*** reference pixel logical units rel to image NAXIS ccounting from one
+
+** CRVAL{n}
+
+*** reference pixel physical units (FP) rel to origin of coordinate system 
+
+** CDELT{n}
+
+*** pixel delta physical units 
+
+** CTYPE{n}
+
+*** coordinate system identification
+
+** CROTA{n}
+
+*** coordinate system rotation angle
+
+*** "Users of this option should provide extensive explanatory comments."
+
+
+** SIMPLE=F
+
+*** ""other use defined between cooperating individuals or institutions""
 
