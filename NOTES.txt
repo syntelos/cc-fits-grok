@@ -55,6 +55,8 @@ http://github.com/syntelos/cc-fits-grok
 
 *** reference pixel logical units rel to image NAXIS ccounting from one
 
+*** (Greisen, 2002) floating point value defined to permit subpixel precision and image external locations
+
 ** CRVAL{n}
 
 *** reference pixel physical units (FP) rel to origin of coordinate system 
