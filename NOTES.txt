@@ -8,7 +8,9 @@ http://github.com/syntelos/cc-fits-grok
 
 *** uniform integer data matrix in primary hdu location
 
-*** FORTRAN notation (decl) "INTEGER z(W,H)" (use) "z(x,y)"
+*** pixel indexing
+
+**** FORTRAN notation (decl) "INTEGER z(W,H)" (use) "z(x,y)"
 
          C
          O
@@ -23,21 +25,15 @@ http://github.com/syntelos/cc-fits-grok
        { x, y }.
     }
 
-*** IMAGE W 190, H 244
+**** IMAGE W 190, H 244
 
-*** FORTRAN: INTEGER (190,244)
+**** FORTRAN: INTEGER (190,244)
 
-*** C: USHORT[244][190]
+**** C: USHORT[244][190]
 
-*** FITS: SIMPLE T, BITPIX 16, NAXIS 2, NAXIS1 190, NAXIS2 244
+**** FITS: SIMPLE T, BITPIX 16, NAXIS 2, NAXIS1 190, NAXIS2 244
 
-*** primary hdu data matrix would be 1440 16 bit values
-
-*** pixel indexing
-**** z(1,1) = byte[0,1]
-**** z(2,1) = byte[2,3]
-**** z(1,2) = byte[381,382]
-**** z(110,8) = byte[2879,2880]
+**** primary hdu data matrix would be 1440 16 bit values
 
 ** BSCALE, BZERO
 
